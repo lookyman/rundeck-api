@@ -1,0 +1,22 @@
+{
+  "name": "lookyman/rundeck-api",
+  "description": "Rundeck API wrapper",
+  "keywords": ["Rundeck", "API"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Lukáš Unger",
+      "email": "looky.msc@gmail.com",
+      "homepage": "https://lookyman.net"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lookyman\\Rundeck\\Api\\": "src/"
+    }
+  }
+}
