@@ -24,12 +24,13 @@ class Job
 
 	/**
 	 * @param string $project
+	 * @param array $params
 	 * @return PromiseInterface
 	 */
-	public function list(string $project): PromiseInterface
+	public function list(string $project, array $params = []): PromiseInterface
 	{
 		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
-			new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/project/%s/jobs', urlencode($project)))
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/project/%s/jobs', urlencode($project)), [], $this->client->getConfiguration()->getFormat()->formatParams($params))
 		);
 	}
 }
