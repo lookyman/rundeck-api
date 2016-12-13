@@ -67,4 +67,20 @@ class Job
 			new Request('DELETE', $this->client->getConfiguration()->getBaseUri() . '/jobs/delete', [], $this->client->getConfiguration()->getFormat()->formatParams(['ids' => $ids]))
 		);
 	}
+
+	/**
+	 * @return Execution
+	 */
+	public function execution(): Execution
+	{
+		return new Execution($this->client);
+	}
+
+	/**
+	 * @return Schedule
+	 */
+	public function schedule(): Schedule
+	{
+		return new Schedule($this->client);
+	}
 }
