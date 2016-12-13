@@ -25,6 +25,16 @@ class Acl
 	/**
 	 * @return PromiseInterface
 	 */
+	public function list(): PromiseInterface
+	{
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/acl')
+		);
+	}
+
+	/**
+	 * @return PromiseInterface
+	 */
 	public function get(): PromiseInterface
 	{
 		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
@@ -32,14 +42,26 @@ class Acl
 		);
 	}
 
-	public function create(/* todo args*/): PromiseInterface
+	/**
+	 * @param array $params
+	 * @return PromiseInterface
+	 */
+	public function create(array $params = []): PromiseInterface
 	{
-		// todo
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/system/acl/name.aclpolicy', [], $this->client->getConfiguration()->getFormat()->formatParams($params))
+		);
 	}
 
-	public function update(/* todo args*/): PromiseInterface
+	/**
+	 * @param array $params
+	 * @return PromiseInterface
+	 */
+	public function update(array $params = []): PromiseInterface
 	{
-		// todo
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('PUT', $this->client->getConfiguration()->getBaseUri() . '/system/acl/name.aclpolicy', [], $this->client->getConfiguration()->getFormat()->formatParams($params))
+		);
 	}
 
 	/**
