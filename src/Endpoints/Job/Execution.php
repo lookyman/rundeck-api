@@ -41,6 +41,28 @@ class Execution
 	{
 		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
 			new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/execution/disable', urlencode($id)))
-	);
+		);
+	}
+
+	/**
+	 * @param string[] $ids
+	 * @return PromiseInterface
+	 */
+	public function bulkEnable(array $ids): PromiseInterface
+	{
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/jobs/execution/enable', [], $this->client->getConfiguration()->getFormat()->formatParams(['ids' => $ids]))
+		);
+	}
+
+	/**
+	 * @param string[] $ids
+	 * @return PromiseInterface
+	 */
+	public function bulkDisable(array $ids): PromiseInterface
+	{
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/jobs/execution/disable', [], $this->client->getConfiguration()->getFormat()->formatParams(['ids' => $ids]))
+		);
 	}
 }

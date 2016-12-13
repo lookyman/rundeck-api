@@ -41,6 +41,6 @@ class Schedule
 	{
 		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
 			new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/schedule/disable', urlencode($id)))
-	);
+		);
 	}
 }
