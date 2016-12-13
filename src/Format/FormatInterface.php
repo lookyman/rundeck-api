@@ -10,4 +10,10 @@ interface FormatInterface
 	 * @return callable
 	 */
 	public function setFormat(callable $handler): callable;
+
+	/**
+	 * @param array $params
+	 * @return string
+	 */
+	public function formatParams(array $params): string;
 }

@@ -17,4 +17,13 @@ class JsonFormat implements FormatInterface
 			return $handler($request->withAddedHeader('Content-Type', 'application/json')->withAddedHeader('Accept', 'application/json'), $options);
 		};
 	}
+
+	/**
+	 * @param array $params
+	 * @return string
+	 */
+	public function formatParams(array $params): string
+	{
+		return \GuzzleHttp\json_encode($params);
+	}
 }
