@@ -43,6 +43,8 @@ class Scheduler
 	 */
 	public function jobs(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/scheduler/jobs'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/scheduler/jobs')
+		);
 	}
 }

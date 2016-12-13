@@ -28,6 +28,8 @@ class Job
 	 */
 	public function run(string $id): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/run', urlencode($id))));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/run', urlencode($id)))
+		);
 	}
 }

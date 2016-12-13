@@ -27,7 +27,9 @@ class Acl
 	 */
 	public function get(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/acl/name.aclpolicy'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/acl/name.aclpolicy')
+		);
 	}
 
 	public function create(/* todo args*/): PromiseInterface
@@ -45,6 +47,8 @@ class Acl
 	 */
 	public function delete(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('DELETE', $this->client->getConfiguration()->getBaseUri() . '/system/acl/name.aclpolicy'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('DELETE', $this->client->getConfiguration()->getBaseUri() . '/system/acl/name.aclpolicy')
+		);
 	}
 }

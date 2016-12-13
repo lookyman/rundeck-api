@@ -27,7 +27,9 @@ class Execution
 	 */
 	public function enable(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/system/executions/enable'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/system/executions/enable')
+		);
 	}
 
 	/**
@@ -35,6 +37,8 @@ class Execution
 	 */
 	public function disable(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/system/executions/disable'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/system/executions/disable')
+		);
 	}
 }

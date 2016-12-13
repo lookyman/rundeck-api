@@ -27,7 +27,9 @@ class System
 	 */
 	public function info(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/info'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/info')
+		);
 	}
 
 	/**

@@ -27,7 +27,9 @@ class LogStorage
 	 */
 	public function info(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/logstorage'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/logstorage')
+		);
 	}
 
 	/**

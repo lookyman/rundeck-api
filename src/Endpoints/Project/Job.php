@@ -28,6 +28,8 @@ class Job
 	 */
 	public function list(string $project): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/project/%s/jobs', urlencode($project))));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/project/%s/jobs', urlencode($project)))
+		);
 	}
 }

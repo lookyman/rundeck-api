@@ -27,7 +27,9 @@ class Incomplete
 	 */
 	public function list(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/logstorage/incomplete'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/system/logstorage/incomplete')
+		);
 	}
 
 	/**
@@ -35,6 +37,8 @@ class Incomplete
 	 */
 	public function resume(): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/system/logstorage/incomplete/resume'));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/system/logstorage/incomplete/resume')
+		);
 	}
 }

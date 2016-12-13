@@ -28,6 +28,8 @@ class Server
 	 */
 	public function jobs(string $uuid): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/scheduler/server/%s/jobs', urlencode($uuid))));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/scheduler/server/%s/jobs', urlencode($uuid)))
+		);
 	}
 }
