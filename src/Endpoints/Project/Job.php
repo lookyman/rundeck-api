@@ -33,4 +33,24 @@ class Job
 			new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/project/%s/jobs', urlencode($project)), [], $this->client->getConfiguration()->getFormat()->formatParams($params))
 		);
 	}
+
+	/**
+	 * @param string $project
+	 * @param array $params
+	 * @return PromiseInterface
+	 */
+	public function export(string $project, array $params = []): PromiseInterface
+	{
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/project/%s/jobs/export', urlencode($project)), $this->client->getConfiguration()->getFormat()->formatParams($params))
+		);
+	}
+
+	/**
+	 * @return PromiseInterface
+	 */
+	public function import(): PromiseInterface
+	{
+		throw new \LogicException('Not implemented');
+	}
 }

@@ -24,12 +24,47 @@ class Job
 
 	/**
 	 * @param string $id
+	 * @param array $params
 	 * @return PromiseInterface
 	 */
-	public function run(string $id): PromiseInterface
+	public function run(string $id, array $params = []): PromiseInterface
 	{
 		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
-			new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/run', urlencode($id)))
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/run', urlencode($id)), [], $this->client->getConfiguration()->getFormat()->formatParams($params))
+		);
+	}
+
+	/**
+	 * @param string $id
+	 * @param array $params
+	 * @return PromiseInterface
+	 */
+	public function get(string $id, array $params = []): PromiseInterface
+	{
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s', urlencode($id)), [], $this->client->getConfiguration()->getFormat()->formatParams($params))
+		);
+	}
+
+	/**
+	 * @param string $id
+	 * @return PromiseInterface
+	 */
+	public function delete(string $id): PromiseInterface
+	{
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('DELETE', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s', urlencode($id)))
+		);
+	}
+
+	/**
+	 * @param string[] $ids
+	 * @return PromiseInterface
+	 */
+	public function bulkDelete(array $ids): PromiseInterface
+	{
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('DELETE', $this->client->getConfiguration()->getBaseUri() . '/jobs/delete', [], $this->client->getConfiguration()->getFormat()->formatParams(['ids' => $ids]))
 		);
 	}
 }
