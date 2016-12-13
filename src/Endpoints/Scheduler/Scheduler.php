@@ -26,7 +26,7 @@ class Scheduler
 	 * @param array $params
 	 * @return PromiseInterface
 	 */
-	public function takeover(array $params): PromiseInterface
+	public function takeover(array $params = []): PromiseInterface
 	{
 		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
 			new Request('PUT', $this->client->getConfiguration()->getBaseUri() . '/scheduler/takeover', [], $this->client->getConfiguration()->getFormat()->formatParams($params))
