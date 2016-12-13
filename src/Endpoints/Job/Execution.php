@@ -7,7 +7,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Request;
 use Lookyman\Rundeck\Api\Client;
 
-class Job
+class Execution
 {
 	/**
 	 * @var Client
@@ -26,18 +26,21 @@ class Job
 	 * @param string $id
 	 * @return PromiseInterface
 	 */
-	public function run(string $id): PromiseInterface
+	public function enable(string $id): PromiseInterface
 	{
 		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
-			new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/run', urlencode($id)))
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/execution/enable', urlencode($id)))
 		);
 	}
 
 	/**
-	 * @return Execution
+	 * @param string $id
+	 * @return PromiseInterface
 	 */
-	public function execution(): Execution
+	public function disable(string $id): PromiseInterface
 	{
-		return new Execution($this->client);
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . sprintf('/job/%s/execution/disable', urlencode($id)))
+	);
 	}
 }
