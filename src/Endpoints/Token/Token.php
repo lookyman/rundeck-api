@@ -28,7 +28,9 @@ class Token
 	 */
 	public function list(string $user = null): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/tokens' . ($user ? sprintf('/%s', urlencode($user)) : '')));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/tokens' . ($user ? sprintf('/%s', urlencode($user)) : ''))
+		);
 	}
 
 	/**
@@ -37,7 +39,9 @@ class Token
 	 */
 	public function get(string $token): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/token/' . urlencode($token)));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('GET', $this->client->getConfiguration()->getBaseUri() . '/token/' . urlencode($token))
+		);
 	}
 
 	/**
@@ -46,7 +50,9 @@ class Token
 	 */
 	public function create(string $user): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/tokens/' . urlencode($user)));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('POST', $this->client->getConfiguration()->getBaseUri() . '/tokens/' . urlencode($user))
+		);
 	}
 
 	/**
@@ -55,6 +61,8 @@ class Token
 	 */
 	public function delete(string $token): PromiseInterface
 	{
-		return $this->client->getConfiguration()->getGuzzle()->sendAsync(new Request('DELETE', $this->client->getConfiguration()->getBaseUri() . '/token/' . urlencode($token)));
+		return $this->client->getConfiguration()->getGuzzle()->sendAsync(
+			new Request('DELETE', $this->client->getConfiguration()->getBaseUri() . '/token/' . urlencode($token))
+		);
 	}
 }
